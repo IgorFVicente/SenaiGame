@@ -5,6 +5,7 @@ import java.util.Random;
 public class Jogador {
 	private String[] jogadas = {"Pedra", "Papel", "Tesoura"};
 	private String jogada;
+	private String vencedor;
 	
 	public Jogador(int jogada) {
 		this.jogada = jogadas[jogada];
@@ -23,23 +24,30 @@ public class Jogador {
 		this.jogada = this.jogadas[rnd];
 	}
 	
+	public String getVencedor() {
+		return vencedor;
+	}
+
+	public void setVencedor(String vencedor) {
+		this.vencedor = vencedor;
+	}
+
 	public String jogar(Jogador adversario) {
-		String resultado;
 		if (this.jogada == adversario.jogada) {
-			resultado = "Empate";
+			vencedor = "empate";
 		}
 		else if (this.jogada == "Pedra" & adversario.jogada == "Tesoura") {
-			resultado = "Vitória do jogador!";
+			vencedor = "jogador";
 		}
 		else if (this.jogada == "Papel" & adversario.jogada == "Pedra") {
-			resultado = "Vitória do jogador!";
+			vencedor = "jogador";
 		}
 		else if (this.jogada == "Tesoura" & adversario.jogada == "Papel") {
-			resultado = "Vitória do jogador!";
+			vencedor = "jogador";
 		}
 		else {
-			resultado = "Vitória do computador :(";
+			vencedor = "computador";
 		}
-		return "Você jogou " + this.jogada + " e o computador jogou " + adversario.jogada + ".\nResultado = " + resultado;
+		return vencedor;
 	}
 }
